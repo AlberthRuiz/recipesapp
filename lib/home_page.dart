@@ -27,13 +27,11 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Divider(),
-                //estados textfiel: Enabled Focus, error disable
                 TextField(
                   style: TextStyle(
                     color: Colors.white,
                   ),
                   cursorColor: Color(0xffEDA971),
-
                   controller: titleController,
                   decoration: InputDecoration(
                     contentPadding:
@@ -54,26 +52,11 @@ class HomePage extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide.none,
-
-                      // borderSide: BorderSide(
-                      //   color: Colors.black26,
-                      //   width: 1,
-                      // ),
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none
-                        // borderSide: BorderSide(
-                        //   color: Colors.black26,
-                        //   width: 1.5,
-                        // ),
-                        ),
+                        borderSide: BorderSide.none),
                   ),
-                  // onChanged: (String value) {
-                  //   print(value);
-                  //   title = value;
-                  //   print("title: $title");
-                  // },
                 ),
                 SizedBox(
                   height: 16,
@@ -81,7 +64,6 @@ class HomePage extends StatelessWidget {
                 TextField(
                   style: TextStyle(color: Colors.white),
                   cursorColor: Color(0xffEDA971),
-
                   controller: descriptionController,
                   decoration: InputDecoration(
                     contentPadding:
@@ -102,26 +84,11 @@ class HomePage extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide.none,
-
-                      // borderSide: BorderSide(
-                      //   color: Colors.black26,
-                      //   width: 1,
-                      // ),
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none
-                        // borderSide: BorderSide(
-                        //   color: Colors.black26,
-                        //   width: 1.5,
-                        // ),
-                        ),
+                        borderSide: BorderSide.none),
                   ),
-                  // onChanged: (String value) {
-                  //   print(value);
-                  //   title = value;
-                  //   print("title: $title");
-                  // },
                 ),
                 SizedBox(
                   height: 16,
@@ -129,9 +96,6 @@ class HomePage extends StatelessWidget {
                 TextField(
                   style: TextStyle(color: Colors.white),
                   cursorColor: Color(0xffEDA971),
-                  // cursorHeight: 50,
-                  // cursorRadius: Radius.circular(20),
-                  // cursorWidth: 20,
                   controller: urlImageController,
                   decoration: InputDecoration(
                     contentPadding:
@@ -152,26 +116,11 @@ class HomePage extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                       borderSide: BorderSide.none,
-
-                      // borderSide: BorderSide(
-                      //   color: Colors.black26,
-                      //   width: 1,
-                      // ),
                     ),
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none
-                        // borderSide: BorderSide(
-                        //   color: Colors.black26,
-                        //   width: 1.5,
-                        // ),
-                        ),
+                        borderSide: BorderSide.none),
                   ),
-                  // onChanged: (String value) {
-                  //   print(value);
-                  //   title = value;
-                  //   print("title: $title");
-                  // },
                 ),
                 SizedBox(
                   height: 24,
@@ -211,16 +160,17 @@ class HomePage extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.all(16),
+                  margin: EdgeInsets.symmetric(vertical: 16),
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.yellow,
+                        color: Colors.black.withOpacity(0.5),
                         offset: Offset(5, 5),
                         blurRadius: 8,
                       ),
                     ],
                     borderRadius: BorderRadius.circular(16),
-                    color: Colors.red,
+                    color: Color(0xff626B92).withOpacity(0.2),
                   ),
                   width: double.infinity,
                   child: Column(
@@ -235,9 +185,19 @@ class HomePage extends StatelessWidget {
                           alignment: Alignment.topCenter,
                         ),
                       ),
-                      Text("Lomo Saltado"),
                       Text(
-                          "El lomo saltado es un plato infaltable en nuestras mesas y se caracteriza por la sencillez de su preparación que requiere –además de los ingredientes básicos como la carne, la papa y el arroz– de una sartén (o wok) caliente para dar vida a unos de los sabores más representativos de la gastronomía nacional.")
+                        "Lomo Saltado",
+                        style: TextStyle(fontSize: 24, color: Colors.white),
+                      ),
+                      Text(
+                        "El lomo saltado es un plato infaltable en nuestras mesas y se caracteriza por la sencillez de su preparación que requiere –además de los ingredientes básicos como la carne, la papa y el arroz– de una sartén (o wok) caliente para dar vida a unos de los sabores más representativos de la gastronomía nacional.",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                        ),
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                      )
                     ],
                   ),
                 )
