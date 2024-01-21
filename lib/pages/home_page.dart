@@ -29,80 +29,91 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff29304B),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Mis recetas",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Mis recetas",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white,
+                ),
+              ),
+              Divider(),
+              formulario(titleController, "Ingresa el título", "type"),
+              formulario(descriptionController, "Ingresa la descripción",
+                  "align-justify"),
+              formulario(
+                  urlImageController, "Ingresa la url de la imagen", "image"),
+              SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 48,
+                child: ElevatedButton(
+                  onPressed: () {
+                    recipes.add(Recipe(
+                        title: titleController.text,
+                        description: descriptionController.text,
+                        urlImage: urlImageController.text));
+                    setState(() {});
+                    titleController.clear();
+                    descriptionController.clear();
+                    urlImageController.clear();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    backgroundColor: Color(0xffEDA971),
+                  ),
+                  child: Text(
+                    "Agregar",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                Divider(),
-                formulario(titleController, "Ingresa el título", "type"),
-                formulario(descriptionController, "Ingresa la descripción",
-                    "align-justify"),
-                formulario(
-                    urlImageController, "Ingresa la url de la imagen", "image"),
-                SizedBox(
-                  height: 16,
+              ),
+              Divider(
+                height: 40,
+                thickness: 3,
+                color: Color(0xff626B92),
+              ),
+              Text(
+                "Listado General",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
-                SizedBox(
+              ),
+              Container(
+                child: SizedBox(
+                  height: 300,
                   width: double.infinity,
-                  height: 48,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      recipes.add(Recipe(
-                          title: titleController.text,
-                          description: descriptionController.text,
-                          urlImage: urlImageController.text));
-                      setState(() {});
-                      titleController.clear();
-                      descriptionController.clear();
-                      urlImageController.clear();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      backgroundColor: Color(0xffEDA971),
-                    ),
-                    child: Text(
-                      "Agregar",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-                Divider(
-                  height: 40,
-                  thickness: 3,
-                  color: Color(0xff626B92),
-                ),
-                Text(
-                  "Listado General",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                ...List.generate(
-                    recipes.length,
-                    (index) => RecipeItem(
+                  child: Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: recipes.length,
+                      itemBuilder: (context, index) {
+                        return RecipeItem(
                           urlImage: recipes[index].urlImage,
                           description: recipes[index].description,
                           title: recipes[index].title,
-                        )),
-              ],
-            ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
