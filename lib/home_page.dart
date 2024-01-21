@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -32,6 +33,14 @@ class HomePage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   cursorColor: Color(0xffEDA971),
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(5),
+                    // FilteringTextInputFormatter(
+                    //   RegExp(r'[0-9]'),
+                    //   allow: false,
+                    // )
+                    FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                  ],
                   controller: titleController,
                   decoration: InputDecoration(
                     contentPadding:
@@ -141,6 +150,7 @@ class HomePage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white70,
                       ),
                     ),
                   ),
